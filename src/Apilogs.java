@@ -23,9 +23,28 @@ public static void main(String[] args) throws Exception {
 
     driver.findElement(By.xpath("//input[@placeholder='Enter Captcha']")).sendKeys(captcha);
     driver.findElement(By.className("btn")).click();
+    Thread.sleep(500);
+    driver.findElement(By.xpath("//button[normalize-space()='Yes']")).click();
+    Thread.sleep(2000);
+    driver.findElement(By.className("btn")).click();
+    driver.findElement(By.cssSelector("a[href='/dashboard']")).click();
+    driver.findElement(By.xpath("//span[normalize-space()='IoT Master Management']")).click();
+    driver.findElement(By.xpath("//a[normalize-space()='Api Logs']")).click();
 
 
-    driver.quit();
+    // Selecting each API and looping for each one getting its result
+
+    driver.findElement(By.xpath("//div[@role='combobox']")).click();
+    driver.findElement(By.cssSelector("label[title='Aether Current State']")).click();
+
+
+
+    // Checking and matching the success result
+
+    driver.findElement(By.)
+
+
+   driver.quit();
     };
 }
 

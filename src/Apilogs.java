@@ -8,6 +8,10 @@ import java.util.concurrent.TimeUnit;
 
 public class Apilogs {
 
+/**
+ * @param args
+ * @throws Exception
+ */
 @SuppressWarnings("deprecation")
 public static void main(String[] args) throws Exception {
     
@@ -41,10 +45,9 @@ public static void main(String[] args) throws Exception {
 
     // Checking and matching the success result
 
-    driver.findElement(By.)
 
-
-   driver.quit();
+  // here new changes from PC
+    driver.quit();
     };
 }
 

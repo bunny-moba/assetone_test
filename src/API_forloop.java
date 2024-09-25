@@ -1,15 +1,12 @@
-import org.openqa.selenium.support.ui.Select;  
-import org.openqa.selenium.WebElement;
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+//import org.openqa.selenium.support.ui.Select;  
+//import org.openqa.selenium.WebElement;
+import java.util.concurrent.TimeUnit;
 
-public class Apilogs {
+public class API_forloop {
 
 /**
  * @param args
@@ -30,10 +27,11 @@ public static void main(String[] args) throws Exception {
 
     driver.findElement(By.xpath("//input[@placeholder='Enter Captcha']")).sendKeys(captcha);
     driver.findElement(By.className("btn")).click();
-    Thread.sleep(500);
+    Thread.sleep(2000);
     driver.findElement(By.xpath("//button[normalize-space()='Yes']")).click();
     Thread.sleep(2000);
     driver.findElement(By.className("btn")).click();
+    Thread.sleep(2000);
     driver.findElement(By.cssSelector("a[href='/dashboard']")).click();
     driver.findElement(By.xpath("//span[normalize-space()='IoT Master Management']")).click();
     driver.findElement(By.xpath("//a[normalize-space()='Api Logs']")).click();
@@ -41,18 +39,43 @@ public static void main(String[] args) throws Exception {
 
     // Selecting each API and looping for each one getting its result
 
-    //driver.findElement(By.xpath("//div[@role='combobox']")).click();
+   // driver.findElement(By.xpath("//div[@role='combobox']")).click();
     //driver.findElement(By.cssSelector("label[title='Aether Current State']")).click();
-    Thread.sleep(5000);
-    driver.findElement(By.cssSelector(".ng-arrow-wrapper")).click();
-    driver.findElement(By.cssSelector("div[id='a74927e8ad4f-1'] div[class='custom-control custom-checkbox']")).click();
-    //WebDriverWait wait = new WebDriverWait(driver,30);
-    //wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".ng-arrow-wrapper")));
+   // driver.findElement(By.xpath("//div[@class='ng-select-container']")).click();
+
+     // Loop through the dropdown items (assuming IDs range from 0 to 12)
+     for (int i = 0; i <= 30; i++) {
+        // Build the dynamic CSS selector for each item
+        Thread.sleep(5000);
+        driver.findElement(By.cssSelector(".ng-arrow-wrapper")).click();
+        String cssSelector = "div[id='a74927e8ad4f-" + i + "'] div[class='custom-control custom-checkbox']";
+
+        // Find the element using the dynamic CSS selector and click it
+        WebElement option = driver.findElement(By.cssSelector(cssSelector));
+        option.click();
+
+        driver.findElement(By.className("btn")).click();
+        // Optionally, capture or validate the data after each selection
+        // For example, capturing the selected text or status
+        String status = driver.findElement(By.xpath("//td[contains(text(),'Fail")).getText();
+        System.out.println("Option " + i + ": " + status);
+
+        // If needed, add some wait to allow actions to complete
+        try {
+            Thread.sleep(1000); // sleep for 1 second
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+
     // Checking and matching the success result
 
 
+
+
   // here new changes from PC
-   // driver.quit();
+    driver.quit();
     };
 }
 

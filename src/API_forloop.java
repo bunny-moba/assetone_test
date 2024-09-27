@@ -42,14 +42,17 @@ public static void main(String[] args) throws Exception {
    // driver.findElement(By.xpath("//div[@role='combobox']")).click();
     //driver.findElement(By.cssSelector("label[title='Aether Current State']")).click();
    // driver.findElement(By.xpath("//div[@class='ng-select-container']")).click();
+   String[] optionIds = {"a7b904e06ecb-0", "a7b904e06ecb-1", "a7b904e06ecb-2", "a7b904e06ecb-3"};
 
      // Loop through the dropdown items (assuming IDs range from 0 to 12)
-     for (int i = 0; i <= 30; i++) {
+     for (int i = 0; i < optionIds.length; i++) {
         // Build the dynamic CSS selector for each item
         Thread.sleep(5000);
         driver.findElement(By.cssSelector(".ng-arrow-wrapper")).click();
-        String cssSelector = "div[id='a74927e8ad4f-" + i + "'] div[class='custom-control custom-checkbox']";
+        String cssSelector = "div[id='" + optionIds[i] + "'] div[class='custom-control custom-checkbox']";
 
+
+        
         // Find the element using the dynamic CSS selector and click it
         WebElement option = driver.findElement(By.cssSelector(cssSelector));
         option.click();

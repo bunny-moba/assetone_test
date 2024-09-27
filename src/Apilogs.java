@@ -44,12 +44,35 @@ public static void main(String[] args) throws Exception {
     //driver.findElement(By.xpath("//div[@role='combobox']")).click();
     //driver.findElement(By.cssSelector("label[title='Aether Current State']")).click();
     Thread.sleep(5000);
-    driver.findElement(By.cssSelector(".ng-arrow-wrapper")).click();
-    driver.findElement(By.cssSelector("div[id='a74927e8ad4f-1'] div[class='custom-control custom-checkbox']")).click();
+    //driver.findElement(By.cssSelector(".ng-arrow-wrapper")).click();
+    //driver.findElement(By.cssSelector("div[id='a74927e8ad4f-1'] div[class='custom-control custom-checkbox']")).click();
     //WebDriverWait wait = new WebDriverWait(driver,30);
     //wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".ng-arrow-wrapper")));
     // Checking and matching the success result
+    
+    WebElement dropdown = driver.findElement(By.cssSelector(".ng-arrow-wrapper"));
+    dropdown.click();
+    
+    String[] optionTexts = {"Aether Current State", "Aether Summary Fuel Previous Day", "Aether Summary MW Current Day", "Aether Tree Vehicle"};
 
+
+    for (String optionText : optionTexts) {
+        // Open the dropdown
+        dropdown.click();
+        
+        // Find the option using visible text and click it
+        WebElement option = driver.findElement(By.xpath("(//span[contains(text(),' " + optionText + "')]"));
+        option.click();
+        
+        // Perform your play button click
+        driver.findElement(By.className("btn")).click();
+        
+        // Capture the status
+        String status = driver.findElement(By.xpath("//td[contains(text(),'Fail')]")).getText();
+        System.out.println(optionText + ": " + status);
+        
+        Thread.sleep(2000); // Wait between selections
+    }
 
   // here new changes from PC
    // driver.quit();

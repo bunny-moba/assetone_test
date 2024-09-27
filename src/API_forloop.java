@@ -27,7 +27,7 @@ public static void main(String[] args) throws Exception {
 
     driver.findElement(By.xpath("//input[@placeholder='Enter Captcha']")).sendKeys(captcha);
     driver.findElement(By.className("btn")).click();
-    Thread.sleep(2000);
+    Thread.sleep(500);
     driver.findElement(By.xpath("//button[normalize-space()='Yes']")).click();
     Thread.sleep(2000);
     driver.findElement(By.className("btn")).click();
@@ -39,24 +39,22 @@ public static void main(String[] args) throws Exception {
 
     // Selecting each API and looping for each one getting its result
 
-   // driver.findElement(By.xpath("//div[@role='combobox']")).click();
-    //driver.findElement(By.cssSelector("label[title='Aether Current State']")).click();
-   // driver.findElement(By.xpath("//div[@class='ng-select-container']")).click();
-   String[] optionIds = {"a7b904e06ecb-0", "a7b904e06ecb-1", "a7b904e06ecb-2", "a7b904e06ecb-3"};
+    
+    String[] optionIds = {"Aether Current State", "Aether Summary Fuel Previous Day", "Aether Summary MW Current Day", "Aether Tree Vehicle"};
 
      // Loop through the dropdown items (assuming IDs range from 0 to 12)
      for (int i = 0; i < optionIds.length; i++) {
-        // Build the dynamic CSS selector for each item
-        Thread.sleep(5000);
+        Thread.sleep(2000);
+        ////label[normalize-space()='Aether Summary MW Previous Day']
         driver.findElement(By.cssSelector(".ng-arrow-wrapper")).click();
-        String cssSelector = "div[id='" + optionIds[i] + "'] div[class='custom-control custom-checkbox']";
-
-
         
-        // Find the element using the dynamic CSS selector and click it
-        WebElement option = driver.findElement(By.cssSelector(cssSelector));
+        
+        // Find the option using visible text and click it
+        WebElement option = driver.findElement(By.xpath("(//span[contains(text(),' " + optionIds[i] + "')]"));
         option.click();
-
+        
+        
+        
         driver.findElement(By.className("btn")).click();
         // Optionally, capture or validate the data after each selection
         // For example, capturing the selected text or status
@@ -65,7 +63,7 @@ public static void main(String[] args) throws Exception {
 
         // If needed, add some wait to allow actions to complete
         try {
-            Thread.sleep(1000); // sleep for 1 second
+            Thread.sleep(5000); // sleep for 1 second
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

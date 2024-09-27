@@ -16,7 +16,7 @@ public class Apilogs {
  * @throws Exception
  */
 @SuppressWarnings("deprecation")
-public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws Exception {
     
     WebDriver driver = new EdgeDriver();
     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -55,8 +55,9 @@ public static void main(String[] args) throws Exception {
     
     String[] optionTexts = {"Aether Current State", "Aether Summary Fuel Previous Day", "Aether Summary MW Current Day", "Aether Tree Vehicle"};
 
+    driver.findElement(By.xpath("//label[normalize-space()='Aether Summary MW Previous Day']")).click();
 
-    for (String optionText : optionTexts) {
+    /*for (String optionText : optionTexts) {
         // Open the dropdown
         dropdown.click();
         
@@ -72,7 +73,7 @@ public static void main(String[] args) throws Exception {
         System.out.println(optionText + ": " + status);
         
         Thread.sleep(2000); // Wait between selections
-    }
+    }*/
 
   // here new changes from PC
    // driver.quit();
